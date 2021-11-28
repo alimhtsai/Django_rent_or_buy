@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+
+<h1>租賃物件細節</h1>
+
+<p>所選的租賃物件的基本資料如下：</p>
+  
+  <ul>
+  <li><strong>Title:</strong> {{ rentdb.Title }}</a></li>
+  <li><strong>MrtCode:</strong> {{ rentdb.MrtCode }}</li>
+  <li><strong>MrtName:</strong> {{ rentdb.MrtName }}</li>
+  <li><strong>Address:</strong> {{ rentdb.Address }} </li>  
+  <li><strong>FloorType:</strong> {{ rentdb.FloorType }} </li> 
+  <li><strong>RoomNum:</strong> {{ rentdb.RoomNum }} </li>   
+  <li><strong>Price:</strong> {{ rentdb.Price }} </li>  
+  <li><strong>Size:</strong> {{ rentdb.Size }} </li> 
+  <li><strong>Floor:</strong> {{ rentdb.Floor }} </li> 
+  <li><strong>Parking:</strong> {{ rentdb.Parking }} </li> 
+  <li><strong>Link:</strong> <a href={{ rentdb.Link }}>{{ rentdb.Link }}</a></li>
+  </ul>
+
+ 
+{% endblock %}

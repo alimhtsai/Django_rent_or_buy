@@ -1,0 +1,21 @@
+<!-- 套用樣版base_generic.html -->
+{% extends "base_generic.html" %}
+
+
+<!-- 套用base_generic.html裡面的 block content  endblock 區塊 -->
+{% block content %}
+<h1>Taipei Rent or Buy</h1>
+
+<p>Welcome to <em>Taipei Rent or Buy</em>, a very basic Django website developed by A.T</p>
+
+
+
+<h2>Dynamic content</h2>
+
+<p>The DB has the following record counts:</p>
+<ul>
+    <li><strong>Buydb數量：</strong> {{ num_buydb }} </li>
+    <li><strong>Rentdb數量：</strong> {{ num_rentdb }} </li>
+</ul>
+
+{% endblock %}

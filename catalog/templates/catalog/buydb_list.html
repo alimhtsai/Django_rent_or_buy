@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Buydb-List</h1>
+
+    <!-- 在views.py的class BuydbListView定義的get_queryset()
+    會自動傳送一個預設的變數名稱buydb_list過來，當作list清單網頁的資料 -->
+    {% if buydb_list %}
+    <ul>
+
+      {% for buydb in buydb_list %}
+      <li>
+        <strong>物件編號：</strong><a href="{{ buydb.get_absolute_url }}">{{ buydb.Title }}</a> （MrtName: {{ buydb.MrtName }}）
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no objects in the buydb.</p>
+    {% endif %}       
+
+{% endblock %}

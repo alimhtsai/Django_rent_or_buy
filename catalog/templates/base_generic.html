@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  {% block title %}<title>Tapei Rent or Buy</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 引用bootstrap相關css以及函式庫，可發現body的排版皆是使用bootstrap的語法:div -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  
+  <!-- Add additional CSS in static file -->
+  <!-- load static就是永遠會載入的路徑，使用方式:把常會載入的.css或.js放在static路徑下即可 -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+
+
+<!-- bootstrap常見的div排版方式:div -->
+<div class="container-fluid">
+
+<!-- 這個div row是用來當menu的，因為下方有引用自訂的css:sidebar-nav -->
+<div class="row">
+	<div class="col-sm-2">
+	  
+      {% block sidebar %}
+      <ul class="sidebar-nav">
+          <li><img src = "https://image.flaticon.com/icons/png/512/553/553416.png" height="24"><a href="{% url 'index' %}"><strong> Home</strong></a></li>
+      </ul>
+	  
+	  
+	  <ul class="sidebar-nav">
+		  
+		  
+      </ul>
+	  
+	  
+	  <ul class="sidebar-nav">
+		  <li><img src = "https://image.flaticon.com/icons/png/512/2666/2666505.png" height="24"><a href="{% url 'buydb' %}"><strong> Buydb-List</strong></a></li>
+		  <li><img src = "https://image.flaticon.com/icons/png/512/3126/3126489.png" height="24"><a href="{% url 'buydb-filter' %}"><strong> Buydb-Filter</strong></a></li> 
+		  <li><img src = "https://image.flaticon.com/icons/png/512/3126/3126489.png" height="24"><a href="{% url 'buydb-filter-mrtcode' %}"><strong> Buydb-MetroCode-Filter</strong></a></li>
+		  <li><img src = "https://image.flaticon.com/icons/png/512/3126/3126489.png" height="24"><a href="{% url 'buydb-filter-metromap' %}"><strong> Buydb-MetroMap-Filter</strong></a></li>
+      </ul>
+	  
+	  
+	  
+	  <ul class="sidebar-nav">
+		  <li><img src = "https://image.flaticon.com/icons/png/512/2666/2666505.png" height="24"><a href="{% url 'rentdb' %}"><strong> Rentdb-List</strong></a></li>
+		  <li><img src = "https://image.flaticon.com/icons/png/512/3126/3126489.png" height="24"><a href="{% url 'rentdb-filter' %}"><strong> Rentdb-Filter</strong></a></li>
+		  <li><img src = "https://image.flaticon.com/icons/png/512/3126/3126489.png" height="24"><a href="{% url 'rentdb-filter-mrtcode' %}"><strong> Rentdb-MetroCode-Filter</strong></a></li>
+		  <li><img src = "https://image.flaticon.com/icons/png/512/3126/3126489.png" height="24"><a href="{% url 'rentdb-filter-metromap' %}"><strong> Rentdb-MetroMap-Filter</strong></a></li>
+      </ul>
+	  
+	  
+     {% endblock %}
+      </div>
+
+      <!-- 以下則是html主體 -->
+      <div class="col-sm-10 ">
+      {% block content %}{% endblock %}
+
+      {% comment %} 分頁機制 {% endcomment %}
+      {% block pagination %}
+        {% if is_paginated %}
+            <div class="pagination">
+                <span class="page-links">
+                    {% if page_obj.has_previous %}
+                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+                    <span class="page-current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+      {% endblock %} 
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

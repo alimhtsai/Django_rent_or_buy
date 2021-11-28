@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+
+<h1>貸款物件細節</h1>
+
+<p>所選的貸款物件的基本資料如下：</p>
+  
+  <ul>
+  <li><strong>Title:</strong> {{ buydb.Title }}</a></li>
+  <li><strong>MrtCode:</strong> {{ buydb.MrtCode }}</li>
+  <li><strong>MrtName:</strong> {{ buydb.MrtName }}</li>
+  <li><strong>Address:</strong> {{ buydb.Address }} </li>  
+  <li><strong>FloorType:</strong> {{ buydb.FloorType }} </li> 
+  <li><strong>RoomNum:</strong> {{ buydb.RoomNum }} </li>   
+  <li><strong>Price:</strong> {{ buydb.Price }} </li>  
+  <li><strong>Size:</strong> {{ buydb.Size }} </li> 
+  <li><strong>Floor:</strong> {{ buydb.Floor }} </li> 
+  <li><strong>Parking:</strong> {{ buydb.Parking }} </li> 
+  <li><strong>Link:</strong> <a href="{{ buydb.Link }}">{{ buydb.Link }}</a></li> 
+  
+  </ul>
+
+ 
+{% endblock %}
